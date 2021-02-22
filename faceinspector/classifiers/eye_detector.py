@@ -7,7 +7,7 @@ Created on Tue Feb 16 16:56:10 2021
 """
 
 import cv2, dlib, math
-import logging
+import logging, traceback
 import os, sys
 
 BLINK_RATIO_THRESHOLD = 3.35 #5.7
@@ -45,6 +45,9 @@ def get_blink_ratio(eye_points, facial_landmarks):
     return ratio
 
 
+"""
+@retrun None on error
+"""
 def get_avg_eye_ratio(img):
     # detect eyes using landmarks in dlib
     shape_predictor = dlib.shape_predictor(landmarks_file)
@@ -73,14 +76,24 @@ def get_avg_eye_ratio(img):
     # return None if no face is found
     return None
     
-    
-def eye_ratio_difference(img1, img2):
-    return abs(get_avg_eye_ratio(img1)[0] - get_avg_eye_ratio(img2)[0])
 
+'''
+    @return 0 on error
+'''
+def eye_ratio_difference(img1, img2):
+    try:
+        return abs(get_avg_eye_ratio(img1)[0] - get_avg_eye_ratio(img2)[0])
+    except:
+        traceback.print_exc()
+        return 0
 
 def get_avg_eye_state(img, blinkRatioThreshold=BLINK_RATIO_THRESHOLD):
-    avg_blink_ratio = get_avg_eye_ratio(img)[0]
+    try:
+        avg_blink_ratio = get_avg_eye_ratio(img)[0]
 
-    if avg_blink_ratio > blinkRatioThreshold:
-        return 0
-    else: return 1
+        if avg_blink_ratio > blinkRatioThreshold:
+            return 0
+        else: return 1
+    except:
+        traceback.print_exc()
+        return -1

@@ -44,7 +44,7 @@ def test_eye_state():
             print("closed_{} has no face".format(file_name))
 
     for name, eye_state in result.items():
-        print('{} is {}'.format(name, 'opened' if eye_state==1 else 'closed'))
+        print('{} is {}'.format(name, 'opened' if eye_state==1 else 'closed' if eye_state==0 else 'undefined'))
 
     # img = cv2.imread(getImagePath('open', 8))
     # eye_state = eye_detector.get_avg_eye_state(img)
