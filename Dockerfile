@@ -15,6 +15,7 @@ RUN echo "Make sure flask is installed:"
 RUN python -c "import flask"
 
 # Run tests
+RUN pwd
 RUN python tests/eye_detector.test.py
 
 # The code to run when container is started:
