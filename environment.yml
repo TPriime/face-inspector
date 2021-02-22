@@ -5,5 +5,7 @@ dependencies:
   - python=3.8
   - flask
   - flask_cors
-  - opencv-python
   - dlib
+  - pip
+  - pip:
+    - -r file:requirements.txt
