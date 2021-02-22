@@ -1,0 +1,9 @@
+name: myenv
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - flask
+  - flask_cors
+  - opencv-python
+  - dlib
