@@ -15,4 +15,5 @@ RUN python -c "import flask"
 
 # The code to run when container is started:
 COPY . .
-ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "myenv", "python", "app.py"]
+#ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "myenv", "python", "app.py"]
+ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "myenv", "python", "tests/eye_detector.test.py"]
