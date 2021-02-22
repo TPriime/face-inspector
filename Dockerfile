@@ -20,4 +20,6 @@ COPY . .
 # Run tests
 RUN python tests/eye_detector.test.py
 
+EXPOSE 5000
+
 ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "myenv", "python", "app.py"]
