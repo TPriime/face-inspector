@@ -29,7 +29,6 @@ FROM debian:buster AS runtime
 # Copy /venv from the previous stage:
 COPY --from=build /venv /venv
 
-
 # Make sure the environment is activated:
 #RUN echo "Make sure flask is installed:"
 #RUN python -c "import flask"
