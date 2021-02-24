@@ -31,8 +31,8 @@ COPY --from=build /venv /venv
 
 
 # Make sure the environment is activated:
-RUN echo "Make sure flask is installed:"
-RUN python -c "import flask"
+#RUN echo "Make sure flask is installed:"
+#RUN python -c "import flask"
 
 # The code to run when container is started:
 COPY . .
